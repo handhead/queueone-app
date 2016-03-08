@@ -1,4 +1,7 @@
 .wisteria {
+  & {
+    color: $wisteria;
+  }
   &-bg {
     background-color: $wisteria;
   }

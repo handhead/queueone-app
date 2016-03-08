@@ -27,28 +27,48 @@ angular.module('starter', ['ionic', 'starter.controllers','ksSwiper'])
 
 
     .state('account', {
-      url:'/account',
-      abstract:true,
-      templateUrl:'templates/account.html'
+      url: '/account',
+      abstract: true,
+      templateUrl: 'templates/account.html'
     })
 
     .state('account.homescreen',{
-      url:'/homescreen',
-      views:{
-        'content':{
-          templateUrl:'views/homescreen.html'
+      url: '/homescreen',
+      views: {
+        'account': {
+          templateUrl: 'views/homescreen.html'
         }
       }
     })
 
-    .state('account.login',{
-      url:'/login',
-      views:{
-        'content':{
-          templateUrl:'views/login.html'
+    .state('account.consumer', {
+      url: '/consumer',
+      abstract: true,
+      views: {
+        'account': {
+          templateUrl: 'templates/account/consumer.html'
         }
       }
     })
+
+    .state('account.consumer.signin', {
+      url: '/signin',
+      views: {
+        'consumer': {
+          templateUrl: 'views/account/consumer/signin.html'
+        }
+      }
+    })
+
+    .state('account.consumer.signup', {
+      url:'/signup',
+      views:{
+        'consumer':{
+          templateUrl:'views/account/consumer/signup.html'
+        }
+      }
+    })
+
     .state('app', {
     url: '/app',
     abstract: true,

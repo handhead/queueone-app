@@ -1,0 +1,22 @@
+.margin {
+  &-left {
+    margin-left: $content-margin;
+  }
+  &-right {
+    margin-right: $content-margin;
+  }
+  &-horizontal {
+    margin-left: $content-margin;
+    margin-right: $content-margin;
+  }
+  &-top {
+    margin-top: $content-margin;
+  }
+  &-bottom {
+    margin-bottom: $content-margin;
+  }
+  &-vertical {
+    margin-top: $content-margin;
+    margin-bottom: $content-margin;
+  }
+}

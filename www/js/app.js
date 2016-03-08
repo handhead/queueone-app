@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers','ksSwiper'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,6 +25,30 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
+
+    .state('account', {
+      url:'/account',
+      abstract:true,
+      templateUrl:'templates/account.html'
+    })
+
+    .state('account.homescreen',{
+      url:'/homescreen',
+      views:{
+        'content':{
+          templateUrl:'views/homescreen.html'
+        }
+      }
+    })
+
+    .state('account.login',{
+      url:'/login',
+      views:{
+        'content':{
+          templateUrl:'views/login.html'
+        }
+      }
+    })
     .state('app', {
     url: '/app',
     abstract: true,
@@ -32,7 +56,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
+ /* .state('app.search', {
     url: '/search',
     views: {
       'menuContent': {
@@ -67,7 +91,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'PlaylistCtrl'
       }
     }
-  });
+  })*/;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/account/homescreen');
 });

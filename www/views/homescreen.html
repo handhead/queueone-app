@@ -1,0 +1,19 @@
+<ion-view hide-nav-bar="true">
+  <ion-content scroll="false">
+    <ks-swiper-container initial-slide="3" loop="false" pagination-is-active="true" pagination-clickable="true" show-nav-buttons="false" slides-per-view="1" space-between="0">
+      <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5]">
+        <img ng-src="http://api.randomuser.me/portraits/thumb/men/{{s}}.jpg">
+      </ks-swiper-slide>
+    </ks-swiper-container>
+  </ion-content>
+  <ion-footer-bar>
+    <div class="row">
+      <button class="col button button-light">
+        Inscreva-se
+      </button>
+      <button class="col button button-balanced">
+        Entrar
+      </button>
+    </div>
+  </ion-footer-bar>
+</ion-view>

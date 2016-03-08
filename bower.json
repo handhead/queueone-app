@@ -3,5 +3,10 @@
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.2.4"
+  },
+  "dependencies": {
+    "ionic-flat-colors": "^0.2.3",
+    "angular-swiper": "^0.3.2",
+    "fonts-raleway": "^0.0.4"
   }
 }

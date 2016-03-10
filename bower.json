@@ -7,6 +7,7 @@
   "dependencies": {
     "ionic-flat-colors": "^0.2.3",
     "angular-swiper": "^0.3.2",
-    "fonts-raleway": "^0.0.4"
+    "fonts-raleway": "^0.0.4",
+    "sails.io.js": "^0.13.5"
   }
 }

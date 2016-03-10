@@ -3,12 +3,12 @@
     <div class="row responsive-md padding">
       <div class="col-50 col-offset-25">
         <div class="light-bg padding">
-          <h1 class="text-center wisteria">Consumidor</h1>
+          <h1 class="text-center wisteria">Provedor</h1>
           <form name="userForm">
             <div class="list list-inset ">
               <label class="item item-input padding">
                 <i class="icon ion-person margin-right"></i>
-                <input type="text" name="cpf" placeholder="CPF" required>
+                <input type="text" name="cnpj" placeholder="CNPJ" required>
                 <span ng-show="userForm.cpf.$touched && userForm.cpf.$invalid">The name is required.</span>
               </label>
               <label class="item item-input padding">
@@ -20,8 +20,7 @@
           </form>
         </div>
         <div class="padding">
-          <button class="button button-block button-outline button-light "
-                  ui-sref="account.consumer.signup">Cadastrar-se</button>
+          <button class="button button-block button-outline button-light " ui-sref="account.provider.signup">Cadastrar-se</button>
         </div>
       </div>
     </div>

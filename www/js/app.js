@@ -4,9 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ksSwiper'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives', 'starter.services', 'starter.factories', 'ksSwiper'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, ConnectionService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,27 +20,39 @@ angular.module('starter', ['ionic', 'starter.controllers','ksSwiper'])
       StatusBar.styleDefault();
     }
   });
+
+  io.socket.on('connect', function() {
+    ConnectionService.setConnection('connected', true);
+  });
+  io.socket.on('disconnect', function() {
+    ConnectionService.setConnection('disconnected', false);
+  });
+  io.socket.on('reconnecting', function() {
+    ConnectionService.setConnection('reconnecting', false);
+  });
+  io.socket.on('reconnect', function() {
+    ConnectionService.setConnection('connected', true);
+  });
+  io.socket.on('error', function() {
+    ConnectionService.setConnection('disconnected', false);
+  });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
 
+  $urlRouterProvider.otherwise('/tutorial');
+
+  $stateProvider
+    .state('tutorial',{
+      url: '/tutorial',
+      templateUrl: 'views/tutorial.html'
+    })
 
     .state('account', {
       url: '/account',
       abstract: true,
       templateUrl: 'templates/account.html'
     })
-
-    .state('account.homescreen',{
-      url: '/homescreen',
-      views: {
-        'account': {
-          templateUrl: 'views/homescreen.html'
-        }
-      }
-    })
-
     .state('account.consumer', {
       url: '/consumer',
       abstract: true,
@@ -50,7 +62,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ksSwiper'])
         }
       }
     })
-
+    .state('account.provider', {
+      url: '/provider',
+      abstract: true,
+      views: {
+        'account': {
+          templateUrl: 'templates/account/provider.html'
+        }
+      }
+    })
     .state('account.consumer.signin', {
       url: '/signin',
       views: {
@@ -59,7 +79,6 @@ angular.module('starter', ['ionic', 'starter.controllers','ksSwiper'])
         }
       }
     })
-
     .state('account.consumer.signup', {
       url:'/signup',
       views:{
@@ -68,50 +87,21 @@ angular.module('starter', ['ionic', 'starter.controllers','ksSwiper'])
         }
       }
     })
-
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
-
- /* .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
+    .state('account.provider.signin', {
+      url: '/signin',
       views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
+        'provider': {
+          templateUrl: 'views/account/provider/signin.html'
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+    .state('account.provider.signup', {
+      url: '/signup',
+      views:{
+        'provider':{
+          templateUrl:'views/account/provider/signup.html'
         }
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  })*/;
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/account/homescreen');
-});
+;});

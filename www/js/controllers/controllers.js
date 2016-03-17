@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [ 'ngMaterial'])
+angular.module('starter.controllers', [])
 
 .controller('ConsumerSignupCtrl', ['$scope', '$http', '$state','Consumer', function($scope, $http, $state, Consumer) {
   var self = this;
@@ -6,13 +6,32 @@ angular.module('starter.controllers', [ 'ngMaterial'])
 
   this.newConsumer = function() {
     console.log(self.consumer);
+    console.log("fired controller");
     Consumer.new(self.consumer).then(function(data){
       console.log('consumer added');
       $state.go('tutorial');
     },function(err){
-      if(err.statusCode == 500)
-        console.log('Dados duplicados');
+      if(err.statusCode == 500) console.log('Dados duplicados');
     })
+  };
+}])
+
+.controller('SigninFormController', ['$scope', '$http', '$state', 'Consumer', function($scope, $http, $state, Consumer) {
+  var self = this;
+  this.consumer = {};
+  this.authError = null;
+
+  this.signinConsumer = function () {
+    console.log('fired')
+    Consumer.login(self.consumer).then(function (response) {
+      if (!response.data.consumer) {
+        this.authError = 'CPF or Password not right';
+      } else {
+        $state.go('tutorial');
+      }
+    }, function (x) {
+      this.authError = 'Server Error';
+    });
   };
 }])
 

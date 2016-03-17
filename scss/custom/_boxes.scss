@@ -12,6 +12,9 @@
   &-top {
     margin-top: $content-margin;
   }
+  &-top-less {
+    margin-top: -20px;
+  }
   &-bottom {
     margin-bottom: $content-margin;
   }
@@ -20,3 +23,11 @@
     margin-bottom: $content-margin;
   }
 }
+
+.center {
+  margin-left: auto;
+  margin-top: 25%;
+  margin-right: auto;
+  display: block;
+}
+

@@ -29,4 +29,16 @@
     background-color: $wisteria;
   }
 }
+.cararra {
+  & {
+    color: $cararra;
+  }
+  &-bg {
+    background-color: $cararra;
+  }
+}
 
+md-input-container .md-input {
+  color: rgba(255,255,255,0.87);
+  border-color: dimgray;
+}

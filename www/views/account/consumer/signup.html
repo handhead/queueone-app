@@ -3,45 +3,32 @@
     <div class="row responsive-md padding">
       <div class="col-50 col-offset-25">
         <div class="light-bg padding">
-          <!--<h1 class="text-center">Consumidor</h1>-->
-          <form name="userForm" ng-submit="ctrl.signup()">
-            <div class="list">
-              <label class="item item-input item-floating-label">
-                <span class="input-label">CPF</span>
-                <input type="text" placeholder="CPF"
-                       ng-model="ctrl.consumer.cpf"
-                       required />
-              </label>
-              <label class="item item-input item-floating-label">
-                <span class="input-label">Nome</span>
-                <input type="text" placeholder="Nome"
-                       ng-model="ctrl.consumer.firstName"
-                       required />
-              </label>
-              <label class="item item-input item-floating-label">
-                <span class="input-label">Sobrenome</span>
-                <input type="text" placeholder="Sobrenome"
-                       ng-model="ctrl.consumer.lastName"
-                       required />
-              </label>
-              <label class="item item-input item-floating-label">
-                <span class="input-label">Email</span>
-                <input type="email" placeholder="Email"
-                       ng-model="ctrl.consumer.email"
-                       required />
-              </label>
-              <label class="item item-input item-floating-label">
-                <span class="input-label">Senha</span>
-                <input type="password" placeholder="Senha"
-                       ng-model="ctrl.consumer.password"
-                       required />
-              </label>
-              <label class="item item-input item-floating-label">
-                <span class="input-label">Confirme a Senha</span>
-                <input type="password" placeholder="Confirme a Senha"
-                       ng-model="ctrl.consumer.confirmPassword"
-                       required />
-              </label>
+          <form ng-submit="ctrl.newConsumer()">
+            <md-content class="md-no-momentum">
+              <md-input-container class="md-block">
+                <input ng-model="ctrl.consumer.cpf" type="text" placeholder="CPF (required)" ng-required="true">
+              </md-input-container>
+              <md-input-container class="md-block">
+                <input ng-model="ctrl.consumer.firstName" type="text" placeholder="Nome" ng-required="true">
+              </md-input-container>
+              <md-input-container class="md-block">
+                <input ng-model="ctrl.consumer.lastName" type="text" placeholder="Sobrenome" ng-required="true">
+              </md-input-container>
+              <md-input-container class="md-block">
+                <input ng-model="ctrl.consumer.email" type="email" placeholder="Email" ng-required="true">
+              </md-input-container>
+              <md-input-container class="md-block">
+                <input ng-model="ctrl.consumer.password" type="password" placeholder="Senha" ng-required="true">
+              </md-input-container>
+              <md-input-container md-no-float class="md-block">
+                <input ng-model="ctrl.consumer.confirmPassword" type="password" placeholder="Comfirme sua Senha" ng-required="true">
+              </md-input-container>
+            </md-content>
+
+            <div ng-controller="TermsOfConsumers" class="md-padding" id="popupConsumers" ng-cloak>
+              <md-checkbox md-no-ink="" ng-model="data.cb5" class="md-primary">
+              </md-checkbox>
+              Aceito os <a ng-click="showAlert($event)">termos</a>
             </div>
             <button type="submit" class="button button-block button-outline button-wisteria">Salvar</button>
           </form>

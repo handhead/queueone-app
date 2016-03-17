@@ -8,6 +8,8 @@
     "ionic-flat-colors": "^0.2.3",
     "angular-swiper": "^0.3.2",
     "fonts-raleway": "^0.0.4",
-    "sails.io.js": "^0.13.5"
+    "sails.io.js": "^0.13.5",
+    "angular-messages": "^1.5.0",
+    "angular-material": "^1.0.6"
   }
 }

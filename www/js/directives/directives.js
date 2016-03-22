@@ -1,6 +1,6 @@
 angular.module('starter.directives', [])
 
-  .directive('backgroundImage', function() {
+  .directive('backgroundImage', function () {
     return function (scope, element, attrs) {
       var url = attrs.backgroundImage;
       //var size = attrs.size || 'cover';

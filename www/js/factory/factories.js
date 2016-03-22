@@ -1,5 +1,5 @@
 angular.module('starter.factories', [])
-  .factory('Consumer', ['$q', 'UserService', function($q, UserService) {
+  .factory('Consumer', ['$q', 'UserService', function ($q, UserService) {
     return {
       new: function (consumer) {
         var deferred = $q.defer();
@@ -120,5 +120,5 @@ angular.module('starter.factories', [])
 
         return deferred.promise;
       }
-  };
+    };
   }]);
